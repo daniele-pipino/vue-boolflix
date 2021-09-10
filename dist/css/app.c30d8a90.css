@@ -1,4 +1,4 @@
-header{height:70px;color:red}.filmcard{color:#f0f8ff}main{height:100vh;background-color:grey}
+header{height:70px;color:red}.filmcard{color:#f0f8ff}main{min-height:100vh;background-color:grey}
 /*!
  * Bootstrap v5.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

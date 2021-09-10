@@ -1,9 +1,13 @@
 <template>
   <main class="">
-    <div class="container">
+    <div class="container mx-auto">
       <div class="row">
-        <div class="col-4">
-          <Filmcard v-for="(film, index) in films" :key="index" />
+        <div
+          class="col-4 text-center my-3 border"
+          v-for="(film, index) in films"
+          :key="index"
+        >
+          <Filmcard :film="film" />
         </div>
       </div>
     </div>
@@ -27,7 +31,7 @@ export default {
 
 <style lang="scss">
 main {
-  height: 100vh;
+  min-height: 100vh;
   background-color: grey;
 }
 </style>
