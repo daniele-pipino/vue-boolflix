@@ -12,7 +12,7 @@
       />
       <button
         @click="$emit('findFilm', searchedFilm)"
-        class="w-25 btn btn-light mx-1"
+        class="w-25 btn btn-light mx-3"
       >
         Cerca
       </button>

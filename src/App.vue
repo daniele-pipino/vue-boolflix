@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @findFilm="takeValue" />
-    <Main :films="films" />
+    <Main :films="films" :series="series" />
   </div>
 </template>
 
@@ -21,12 +21,14 @@ export default {
       api_key: "ec0bc680bef001b261ae0afb63dfeaa0",
       query: "",
       films: [],
+      series: [],
     };
   },
   methods: {
     takeValue(userResearch) {
       this.query = userResearch;
       this.getFilm();
+      this.getSeries();
     },
     getFilm() {
       axios
@@ -36,6 +38,16 @@ export default {
         .then((res) => {
           this.films = res.data.results;
           console.log(this.films);
+        });
+    },
+    getSeries() {
+      axios
+        .get(
+          `${this.baseUri}/search/tv?api_key=${this.api_key}&query=${this.query}`
+        )
+        .then((res) => {
+          this.series = res.data.results;
+          console.log(this.series);
         });
     },
   },
