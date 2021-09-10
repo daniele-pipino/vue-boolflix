@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header />
-    <Main />
+    <Header @findFilm="takeValue" />
+    <Main :films="films" />
   </div>
 </template>
 
@@ -19,27 +19,39 @@ export default {
     return {
       baseUri: "https://api.themoviedb.org/3",
       api_key: "ec0bc680bef001b261ae0afb63dfeaa0",
-      query: "ciao",
+      query: "",
       films: [],
     };
   },
-  methods: {},
+  methods: {
+    takeValue(userResearch) {
+      this.query = userResearch;
+      this.getFilm();
+    },
+    getFilm() {
+      axios
+        .get(
+          `${this.baseUri}/search/movie?api_key=${this.api_key}&query=${this.query}`
+        )
+        .then((res) => {
+          this.films = res.data.results;
+          console.log(this.films);
+        });
+    },
+  },
   created() {
-    axios
-      .get(
-        `${this.baseUri}/search/movie?api_key=${this.api_key}&query=${this.query}`
-      )
-      .then((res) => {
-        const result = res.data.results;
-        console.log(result);
-      });
+    // axios
+    //   .get(
+    //     `${this.baseUri}/search/movie?api_key=${this.api_key}&query=${this.query}`
+    //   )
+    //   .then((res) => {
+    //     this.films = res.data.results;
+    //     console.log(this.films);
+    //   });
   },
 };
 </script>
 
 <style lang="scss">
 @import "scss/style.scss";
-body {
-  background-color: rgb(44, 43, 43);
-}
 </style>
