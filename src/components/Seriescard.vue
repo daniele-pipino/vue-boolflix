@@ -1,14 +1,15 @@
 <template>
-  <div class="seriescard">
+  <div class="seriescard p-3 m-2">
     <p>{{ serie.name }}</p>
     <img
       v-if="flags.includes(serie.original_language)"
       :src="getFlag(serie.original_language)"
       alt=""
-      class="img-fluid"
+      class="img-fluid flag-image"
     />
     <p v-else>{{ serie.original_language }}</p>
-    <p class="d-flex justify-content-center my-3">
+    <p class="d-flex justify-content-center my-3 align-items-center">
+      Voto:
       <i v-for="(value, name) in this.vote" :key="name" class="fas fa-star"></i>
       <i
         v-for="(value, index) in this.totalStar - this.vote"
@@ -16,7 +17,10 @@
         class="far fa-star"
       ></i>
     </p>
-    <!-- <p>{{ posterUrl }}</p> -->
+    <p>{{ serie.overview }}</p>
+    <div class="seriescard-cover">
+      <img :src="this.posterUrl" alt="" />
+    </div>
   </div>
 </template>
 
@@ -52,11 +56,29 @@ export default {
 <style lang="scss">
 .seriescard {
   color: aliceblue;
-  img {
-    height: 20px;
+  min-height: 500px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  background: #000;
+  .flag-image {
+    width: 30px;
   }
   i {
     color: gold;
+  }
+  .seriescard-cover {
+    display: block;
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &:hover {
+      display: none;
+    }
   }
 }
 </style>

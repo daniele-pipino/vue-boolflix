@@ -1,14 +1,15 @@
 <template>
-  <div class="filmcard">
-    <p>{{ film.title }}</p>
+  <div class="filmcard p-3 m-1">
+    <h4>Titolo: {{ film.title }}</h4>
     <img
       v-if="flags.includes(film.original_language)"
       :src="getFlag(film.original_language)"
       alt=""
-      class="img-fluid"
+      class="img-fluid flag-image"
     />
-    <p class="m-1" v-else>{{ film.original_language }}</p>
-    <p class="d-flex justify-content-center my-3">
+    <p class="m-1" v-else>Lingua:{{ film.original_language }}</p>
+    <p class="d-flex justify-content-center my-3 align-items-center">
+      Voto:
       <i v-for="(value, name) in this.vote" :key="name" class="fas fa-star"></i>
       <i
         v-for="(value, index) in this.totalStar - this.vote"
@@ -16,6 +17,10 @@
         class="far fa-star"
       ></i>
     </p>
+    <p>{{ film.overview || "No overview available" }}</p>
+    <div class="filmcard-cover">
+      <img :src="this.posterUrl" alt="" />
+    </div>
     <!-- <p class="copertina">{{ posterUrl }}</p> -->
   </div>
 </template>
@@ -54,11 +59,29 @@ export default {
 <style lang="scss">
 .filmcard {
   color: aliceblue;
-  img {
-    height: 20px;
+  min-height: 500px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  background: #000;
+  .flag-image {
+    width: 30px;
   }
   i {
     color: gold;
+  }
+  .filmcard-cover {
+    display: block;
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &:hover {
+      display: none;
+    }
   }
 }
 </style>

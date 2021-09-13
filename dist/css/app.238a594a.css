@@ -1,4 +1,4 @@
-header{height:70px;color:red}.filmcard{color:#f0f8ff}.filmcard img{height:20px}.filmcard i{color:gold}.seriescard{color:#f0f8ff}.seriescard img{height:20px}.seriescard i{color:gold}main{min-height:100vh;background-color:grey}
+header{height:70px;color:red}.filmcard{color:#f0f8ff;min-height:500px;position:relative;display:block;cursor:pointer;background:#000}.filmcard .flag-image{width:30px}.filmcard i{color:gold}.filmcard .filmcard-cover{display:block}.filmcard .filmcard-cover img{width:100%;height:100%;position:absolute;top:0;left:0}.filmcard .filmcard-cover:hover{display:none}.seriescard{color:#f0f8ff;min-height:500px;position:relative;display:block;cursor:pointer;background:#000}.seriescard .flag-image{width:30px}.seriescard i{color:gold}.seriescard .seriescard-cover{display:block}.seriescard .seriescard-cover img{width:100%;height:100%;position:absolute;top:0;left:0}.seriescard .seriescard-cover:hover{display:none}main{min-height:100vh;background-color:grey}
 /*!
  * Bootstrap v5.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

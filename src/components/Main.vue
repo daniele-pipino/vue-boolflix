@@ -3,9 +3,9 @@
     <div class="container mx-auto">
       <h1 class="text-center">FILM</h1>
       <!-- start film  -->
-      <div class="row">
+      <div class="row g-3">
         <div
-          class="col-4 text-center my-3 border"
+          class="col-4 text-center my-3"
           v-for="(film, index) in films"
           :key="index"
         >
@@ -17,7 +17,7 @@
       <!--start series-->
       <div class="row">
         <div
-          class="col-4 text-center my-3 border"
+          class="col-4 text-center my-3"
           v-for="(serie, index) in series"
           :key="index"
         >
