@@ -9,7 +9,7 @@
           v-for="(film, index) in films"
           :key="index"
         >
-          <Filmcard :film="film" />
+          <Filmcard :film="film" :posterBaseUri="posterBaseUri" />
         </div>
       </div>
       <!-- end film -->
@@ -21,7 +21,7 @@
           v-for="(serie, index) in series"
           :key="index"
         >
-          <Seriescard :serie="serie" />
+          <Seriescard :serie="serie" :posterBaseUri="posterBaseUri" />
         </div>
       </div>
       <!-- end series -->
@@ -38,6 +38,11 @@ export default {
   components: {
     Filmcard,
     Seriescard,
+  },
+  data() {
+    return {
+      posterBaseUri: " https://image.tmdb.org/t/p/",
+    };
   },
   methods: {},
   created() {

@@ -51,16 +51,6 @@ export default {
         });
     },
   },
-  created() {
-    // axios
-    //   .get(
-    //     `${this.baseUri}/search/movie?api_key=${this.api_key}&query=${this.query}`
-    //   )
-    //   .then((res) => {
-    //     this.films = res.data.results;
-    //     console.log(this.films);
-    //   });
-  },
 };
 </script>
 
