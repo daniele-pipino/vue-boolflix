@@ -1,10 +1,22 @@
 <template>
   <div class="seriescard">
     <p>{{ serie.name }}</p>
-    <img :src="getFlag(serie.original_language)" alt="" class="img-fluid" />
-    <p>{{ serie.original_language }}</p>
-    <p>{{ this.vote }}</p>
-    <p>{{ posterUrl }}</p>
+    <img
+      v-if="flags.includes(serie.original_language)"
+      :src="getFlag(serie.original_language)"
+      alt=""
+      class="img-fluid"
+    />
+    <p v-else>{{ serie.original_language }}</p>
+    <p class="d-flex justify-content-center my-3">
+      <i v-for="(value, name) in this.vote" :key="name" class="fas fa-star"></i>
+      <i
+        v-for="(value, index) in this.totalStar - this.vote"
+        :key="index"
+        class="far fa-star"
+      ></i>
+    </p>
+    <!-- <p>{{ posterUrl }}</p> -->
   </div>
 </template>
 
@@ -17,6 +29,8 @@ export default {
       language: this.serie.original_language,
       posterUrl: this.getPoster(),
       vote: this.getVote(),
+      flags: ["it", "en"],
+      totalStar: 5,
     };
   },
   methods: {
@@ -35,8 +49,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .seriescard {
   color: aliceblue;
+  img {
+    height: 20px;
+  }
+  i {
+    color: gold;
+  }
 }
 </style>
