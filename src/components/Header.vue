@@ -1,6 +1,6 @@
 <template>
   <header class="bg-dark d-flex align-items-center justify-content-between">
-    <h1 class="text-center mx-5">BOOLFLIX</h1>
+    <h1 class="text-center mx-3">BOOLFLIX</h1>
     <div class="d-flex mx-2">
       <input
         type="text"

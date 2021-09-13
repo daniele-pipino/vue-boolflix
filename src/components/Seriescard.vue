@@ -10,16 +10,20 @@
     <p v-else>{{ serie.original_language }}</p>
     <p class="d-flex justify-content-center my-3 align-items-center">
       Voto:
-      <i v-for="(value, name) in this.vote" :key="name" class="fas fa-star"></i>
-      <i
-        v-for="(value, index) in this.totalStar - this.vote"
-        :key="index"
-        class="far fa-star"
-      ></i>
+      <span
+        ><i v-for="(value, id) in this.vote" :key="id" class="fas fa-star"></i
+      ></span>
+      <span
+        ><i
+          v-for="(value, id, name) in this.totalStar - this.vote"
+          :key="name"
+          class="far fa-star"
+        ></i
+      ></span>
     </p>
     <p>{{ serie.overview }}</p>
     <div class="seriescard-cover">
-      <img :src="this.posterUrl" alt="" />
+      <img :src="`${this.posterBaseUri}w342${serie.poster_path}`" alt="" />
     </div>
   </div>
 </template>
@@ -31,7 +35,6 @@ export default {
   data() {
     return {
       language: this.serie.original_language,
-      posterUrl: this.getPoster(),
       vote: this.getVote(),
       flags: ["it", "en"],
       totalStar: 5,
@@ -39,9 +42,6 @@ export default {
   },
   methods: {
     getFlag: (language) => require(`@/assets/images/${language}.png`),
-    getPoster() {
-      return (this.posterUrl = `${this.posterBaseUri}w342${this.serie.poster_path}`);
-    },
     getVote() {
       const initialVote = this.serie.vote_average;
       console.log("iniziale", initialVote);

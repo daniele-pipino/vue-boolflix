@@ -10,16 +10,20 @@
     <p class="m-1" v-else>Lingua:{{ film.original_language }}</p>
     <p class="d-flex justify-content-center my-3 align-items-center">
       Voto:
-      <i v-for="(value, name) in this.vote" :key="name" class="fas fa-star"></i>
-      <i
-        v-for="(value, index) in this.totalStar - this.vote"
-        :key="index"
-        class="far fa-star"
-      ></i>
+      <span
+        ><i v-for="(value, id) in this.vote" :key="id" class="fas fa-star"></i>
+      </span>
+      <span
+        ><i
+          v-for="(value, id, name) in this.totalStar - this.vote"
+          :key="name"
+          class="far fa-star"
+        ></i
+      ></span>
     </p>
     <p>{{ film.overview || "No overview available" }}</p>
     <div class="filmcard-cover">
-      <img :src="this.posterUrl" alt="" />
+      <img :src="`${this.posterBaseUri}w342${film.poster_path}`" alt="" />
     </div>
     <!-- <p class="copertina">{{ posterUrl }}</p> -->
   </div>
@@ -32,7 +36,6 @@ export default {
   data() {
     return {
       language: this.film.original_language,
-      posterUrl: this.getPoster(),
       vote: this.getVote(),
       totalStar: 5,
       flags: ["en", "it"],
@@ -41,9 +44,6 @@ export default {
   methods: {
     getFlag(lang) {
       return require(`@/assets/images/${lang}.png`);
-    },
-    getPoster() {
-      return (this.posterUrl = `${this.posterBaseUri}w342${this.film.poster_path}`);
     },
     getVote() {
       const initialVote = this.film.vote_average;
